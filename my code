@@ -1,0 +1,72 @@
+#include <cmath>
+#include <cstdio>
+#include <vector>
+#include <iostream>
+#include <algorithm>
+using namespace std;
+
+
+long long int dfs_travel(const vector<vector<long long int> > &l,long long int count,long long int s,long long int d,long long int z,long long int p[]){
+    long long int x,q;
+    q = count%z;
+    for(auto y:l[s]){
+        if(p[y]==-1){
+            if (y==d){
+                count = count + 1;
+                count = count%z;
+                p[y]=1;
+            }
+            else{
+            x = dfs_travel(l,count,y,d,z,p);
+            x = x%z;
+            p[y] = x - count ;
+            count = x;
+            count = count%z;
+            }
+        }
+        else{
+            count = count + p[y];
+            count = count%z;
+        }
+    }
+    p[s] = count - q;
+    p[s] = p[s]%z;
+    count = count%z;
+    return count;
+}
+
+
+int main() {
+    long long int N,S,D,F;
+    long long int a,b;
+    long long int i,j,z,check;
+    long long int count = 0;
+    check = 0;    // for path
+    vector<vector<long long int>>l;             // for freindships
+    scanf("%lld",&N);
+    scanf("%lld",&S);
+    scanf("%lld",&D);
+    scanf("%lld",&F);      // major inputs
+    long long int p[N] ;
+    for(i=0;i<=N;i=i+1){
+        l.push_back(vector<long long int>());
+        p[i] = -1;
+    }                   // initialization of list   
+    
+    for(j=0;j<F;j=j+1){
+        scanf("%lld",&a);
+        scanf("%lld",&b);
+        l[a].push_back(b);
+    }                   // friends input
+    z = 1000000000000000;
+    count = dfs_travel(l,0,S,D,z,p);
+  //  printf("%lld ",count);
+    count = count%z;
+    printf("%lld",count);
+   // for(i=0;i<N;i++){
+       // printf("%d ",p[i]);
+  //  }
+    
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */   
+    return 0;
+}
