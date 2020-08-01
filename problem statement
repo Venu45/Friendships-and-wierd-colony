@@ -1,0 +1,36 @@
+There are N houses in a colony, numbered 0, 1, 2,...., N-1. Person in house A can deliver a letter to a person in house B if B is a friend of A. Friendship is not mutual in the colony i.e., it's not necessary that if A is a friend of B, B has to be a friend of A. Moreover, in this unique colony, friendship is not cyclic. Ramesh is an extremely intelligent boy in the colony but he has a phobia of big numbers. He developed curiosity to calculate the number of ways a letter can be delivered from a source to a destination. If the final number obtained is greater than or equal to , Ramesh takes Modulo  of the final answer and concludes the resulting number to be his answer.
+
+Input Format
+
+The First line contains an integer N, the number of houses in the colony.
+
+The Second line contains two space separated integers, the source house number(S) and the destination house number(D) respectively.
+
+The Third line contains an integer F, the number of friendships in the colony.
+
+Each of the next F lines contains two space separated integers ui, vi meaning person in house vi is a friend of person in house ui i.e., person in house ui can deliver a letter to person in house vi but not vice versa.
+
+Constraints
+
+
+
+ Number of Friendships 
+
+Output Format
+
+Print the total number of ways in which a letter can be delivered from source house to destination house modulo .
+
+Sample Input 0
+
+4
+1 0
+6
+1 3
+1 2
+1 0
+2 0
+3 2
+3 0
+Sample Output 0
+
+4
